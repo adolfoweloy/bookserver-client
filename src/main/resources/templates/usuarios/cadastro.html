@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>cadastro de usuários</title>
+</head>
+<body>
+
+    <h1>cadastro de usuário</h1>
+
+    <form action="#" th:action="@{/usuarios}" th:object="${dadosCadastrais}" method="post">
+        <p>
+            <label for="nome">Nome:</label>
+            <input id="nome" type="text" th:field="*{nome}"/>
+        </p>
+
+        <p>
+            <label for="login">Login:</label>
+            <input id="login" type="text" th:field="*{login}"/>
+        </p>
+
+        <p>
+            <label for="senha">Senha:</label>
+            <input id="senha" type="password" th:field="*{senha}"/>
+        </p>
+
+        <p>
+            <button type="submit">Enviar</button>
+            <button type="button" onclick="javascript: window.location.href='/'">Cancelar</button>
+        </p>
+    </form>
+
+</body>
+</html>
