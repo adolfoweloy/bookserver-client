@@ -3,7 +3,10 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
+    <h1>bookserver-client</h1>
+
     <h3>Olar caro(a) <span sec:authentication="name">fulano</span></h3>
 
+    <button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
 </body>
 </html>

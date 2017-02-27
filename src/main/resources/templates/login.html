@@ -5,6 +5,9 @@
     <title>bookserver-client</title>
 </head>
 <body>
+
+<h1>bookserver-client</h1>
+
 <div th:if="${param.error}">
     Usuário ou senha inválidos
 </div>
@@ -12,12 +15,13 @@
     Você foi deslogado
 </div>
 
-<h1>Login</h1>
+<h3>Login</h3>
 <form th:action="@{/login}" method="post">
     <div><label> Login: <input type="text" name="username"/> </label></div>
     <div><label> Senha: <input type="password" name="password"/> </label></div>
-    <div><button type="submit">Enviar</button></div>
-    <div><button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
+    <div>
+        <button type="submit">Enviar</button>
+        <button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
     </div>
 </form>
 </body>
