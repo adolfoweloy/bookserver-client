@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+    <body>
+        <h1>bookserver-client</h1>
+
+
+        <hr/>
+
+        <div sec:authorize="not isAuthenticated()">
+            <a href="/login">Login</a>
+        </div>
+
+        <div sec:authorize="isAuthenticated()">
+            <a href="/logout">Logout</a>
+        </div>
+
+        <hr/>
+        <a href="/minhaconta/principal">Minha conta</a>
+    </body>
+</html>

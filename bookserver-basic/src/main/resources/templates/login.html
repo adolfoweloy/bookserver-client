@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>bookserver-client</title>
+</head>
+<body>
+
+<h1>bookserver-client</h1>
+
+<div th:if="${param.error}">
+    Usuário ou senha inválidos
+</div>
+<div th:if="${param.logout}">
+    Você foi deslogado
+</div>
+
+<h3>Login</h3>
+<form th:action="@{/login}" method="post">
+    <div><label> Login: <input type="text" name="username"/> </label></div>
+    <div><label> Senha: <input type="password" name="password"/> </label></div>
+    <div>
+        <button type="submit">Enviar</button>
+        <button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
+    </div>
+    <hr/>
+    <div>
+        Não tem conta? <a href="/usuarios">Faça seu cadastro</a><br/>
+    </div>
+</form>
+</body>
+</html>

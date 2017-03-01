@@ -24,6 +24,7 @@
 
     <modules>
         <module>bookserver-auth-code</module>
+		<module>bookserver-basic</module>
     </modules>
 
 	<dependencies>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+    <h1>bookserver-client</h1>
+
+    <h3>Olar caro(a) <span sec:authentication="name">fulano</span></h3>
+
+    <hr/>
+    <h4>Se você tem conta no bookserver, seus livros devem aparecer abaixo:</h4>
+
+    <div th:if="${livros != null}">
+        <table border="1">
+            <tr>
+                <td>titulo</td>
+                <td>nota</td>
+            </tr>
+            <tr th:each="livro : ${livros}">
+                <td th:text="${livro.titulo}">titulo</td>
+                <td th:text="${livro.nota}">nota</td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${erro != null}">
+        <h4 th:text="${erro}"></h4>
+    </div>
+
+    <div th:if="${livros == null}">
+        <pre>
+            opa! você não tem conta no bookserver
+            cadastre-se no bookserver e use suas credenciais aqui no bookserver-client
+        </pre>
+    </div>
+
+    <h4/>
+
+    <button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
+</body>
+</html>
