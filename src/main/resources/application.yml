@@ -2,6 +2,7 @@ server:
   port: 9000
 
 spring:
+  http.converters.preferred-json-mapper: jackson
   thymeleaf:
     cache: false
   datasource:
@@ -16,3 +17,11 @@ spring:
         show_sql: true
         hbm2ddl:
           auto: create-drop
+
+# configurações para acesso ao OAuth2 Provider
+bookserver:
+  authorization-server: http://localhost:8080
+  client-details:
+    client-id: cliente-curl
+    client-secret: 123456
+    redirect-uri: http://localhost:9000/bookserver/callback
