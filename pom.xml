@@ -25,7 +25,10 @@
     <modules>
         <module>bookserver-auth-code</module>
 		<module>bookserver-basic</module>
-    </modules>
+		<module>bookserver-pwd</module>
+		<module>bookserver-implicit</module>
+		<module>bookserver-client-credentials</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -63,6 +66,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.5</version>
 		</dependency>
 	</dependencies>
 

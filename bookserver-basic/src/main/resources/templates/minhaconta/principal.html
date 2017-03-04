@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
+<head>
+    <title>bookserver-client</title>
+    <link href="../webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
+</head>
 <body>
-    <h1>bookserver-client</h1>
+
+<br/>
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Client</h1>
+    </div>
 
     <h3>Olar caro(a) <span sec:authentication="name">fulano</span></h3>
 
     <hr/>
-    <h4>Se você tem conta no bookserver, seus livros devem aparecer abaixo:</h4>
+
+    <h4>
+        Atividades recentes
+    </h4>
+    <table class="table">
+        <tr>
+            <td>dia</td>
+            <td>atividade</td>
+        </tr>
+        <tr>
+            <td>hoje</td>
+            <td>curtiu um post sobre segurança</td>
+        </tr>
+        <tr>
+            <td>ontem</td>
+            <td>participou de uma maratona de programação</td>
+        </tr>
+        <tr>
+            <td>semana passada</td>
+            <td>participou de um Dojo de node.js em Köln Mülheim</td>
+        </tr>
+
+    </table>
 
     <div th:if="${livros != null}">
-        <table border="1">
+        <h4>
+            Esses são seus livros cadastrados na aplicação bookserver
+        </h4>
+
+        <table class="table">
             <tr>
                 <td>titulo</td>
                 <td>nota</td>
@@ -23,19 +58,23 @@
         </table>
     </div>
 
-    <div th:if="${erro != null}">
-        <h4 th:text="${erro}"></h4>
-    </div>
-
     <div th:if="${livros == null}">
-        <pre>
-            opa! você não tem conta no bookserver
-            cadastre-se no bookserver e use suas credenciais aqui no bookserver-client
-        </pre>
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Opla! Você não tem conta no sistema bookserver
+            Use sua conta do bookserver aqui para mostrar os livros que você já leu!
+        </div>
     </div>
 
     <h4/>
 
-    <button type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
+    <button class="btn btn-default" type="button" onclick="javascript: window.location.href='/home'">Voltar</button>
+
+</div>
 </body>
+
+<script src="/jquery.min.js"></script>
+<script src="../webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </html>

@@ -1,6 +1,11 @@
 package br.com.casadocodigo.usuarios;
 
+import br.com.casadocodigo.seguranca.UsuarioLogado;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +19,9 @@ public class CadastroUsuarioController {
     @Autowired
     private UsuariosRepository usuariosRepository;
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView cadastro() {
         ModelAndView mv = new ModelAndView("usuarios/cadastro");
@@ -26,12 +34,15 @@ public class CadastroUsuarioController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView registrar(DadosCadastrais dadosCadastrais) {
-        ModelAndView mv = new ModelAndView("redirect:/home");
+        ModelAndView mv = new ModelAndView("redirect:/minhaconta/principal");
 
         Usuario usuario = new Usuario(dadosCadastrais.getNome(),
                 dadosCadastrais.getLogin(), dadosCadastrais.getSenha());
 
         usuariosRepository.save(usuario);
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(new UsuarioLogado(usuario), usuario.getSenha());
+        SecurityContextHolder.getContext().setAuthentication(authenticationManager.authenticate(auth));
 
         return mv;
     }
